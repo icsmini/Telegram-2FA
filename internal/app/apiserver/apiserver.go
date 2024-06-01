@@ -1,12 +1,16 @@
 package apiserver
 
+import "net/http"
+
 type APIServer struct {
 	config *Config
+	Server *http.Server
 }
 
-func New(config *Config) APIServer {
-	return *APIServer{
-		config: config,
+func New(cfg *Config, srv *http.Server) *APIServer {
+	return &APIServer{
+		config: cfg,
+		Server: srv,
 	}
 }
 
